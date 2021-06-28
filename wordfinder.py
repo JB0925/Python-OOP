@@ -42,7 +42,10 @@ class SpecialWordFinder(WordFinder):
         self.filepath = filepath
         self.make_special_list()
 
+    
     def make_special_list(self):
+        """This method is used to filter out words that start with #
+        or that are empty strings."""
         self.wordlist = super().read_file()
         stop_words = re.findall(r'#\s?[A-Za-z]+\n?', " ".join(self.wordlist), re.I)
         self.wordlist = [word for word in self.wordlist if\
